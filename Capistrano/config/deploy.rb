@@ -68,6 +68,7 @@ namespace :deploy do
       system 'SSH_AUTH_SOCK=/tmp/ssh-mZueDP7822/agent.7822; export SSH_AUTH_SOCK;'
       system 'SSH_AGENT_PID=7823; export SSH_AGENT_PID;'
       system 'echo Agent pid 7823;'
+      system 'ssh-add'
     end
   end
 

@@ -5,6 +5,9 @@
 FROM     ubuntu
 MAINTAINER Jae Choi "jae.choi@sportsbet.com.au"
 
+RUN locale-gen en_AU
+RUN update-locale LANG=en_AU
+
 # make sure the package repository is up to date
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
