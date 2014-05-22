@@ -3,14 +3,14 @@ require_relative "../setup_functions"
 namespace :host_setup do
   desc "Check if Agent Forwarding is enabled if not, sets it"
   task :setup_config do
-    config_file = '/etc/ssh/ssh_config'
+    config_file = '~/.ssh/ssh_config'
     if File.exists?(config_file)
       SetupFunctions::sed_search_and_replace(
           {'ForwardAgent no' => 'ForwardAgent yes', 'AllowAgentForwarding no' => 'AllowAgentForwarding yes'},
           '/etc/ssh/ssh_config'
       )
     else
-      config_file = '/etc/ssh/ssh_config'
+      config_file = '~/.ssh/ssh_config'
       content = <<-RUBY
         puts "Host *"
         puts "ForwardAgent yes"

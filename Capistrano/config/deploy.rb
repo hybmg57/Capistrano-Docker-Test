@@ -45,6 +45,7 @@ namespace :deploy do
   before :deploy, 'deploy:ssh_agent'
   before :deploy, 'host_setup:setup_config'
   before :deploy, 'deploy:check_write_permissions'
+  before :deploy, 'deploy:check_revision'
 
   desc 'Restart application'
   task :restart do
