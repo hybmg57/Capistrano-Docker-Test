@@ -3,7 +3,6 @@ lock '3.2.1'
 
 set :application, 'SecureAccountsServices'
 set :repo_url, 'ssh://git@stash.sportsbet.com.au:7999/ssas/secureaccountservices.git'
-# set :repo_url, ''
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -24,10 +23,10 @@ set :log_level, :debug
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{SecureAccountsServices/config/app.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# set :linked_dirs, %w{}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -37,10 +36,15 @@ set :keep_releases, 5
 
 set :use_sudo, false
 
+set :config_files, %w(
+
+)
+
 namespace :deploy do
 
   before :deploy, 'deploy:ssh_agent'
   before :deploy, 'host_setup:setup_config'
+  before :deploy, 'deploy:check_write_permissions'
 
   desc 'Restart application'
   task :restart do
@@ -64,7 +68,7 @@ namespace :deploy do
 
   desc 'Run ssh-agent on host machine for agent forwarding'
   task :ssh_agent do
-    on roles(:app) do
+    on roles(:all) do
       system 'SSH_AUTH_SOCK=/tmp/ssh-mZueDP7822/agent.7822; export SSH_AUTH_SOCK;'
       system 'SSH_AGENT_PID=7823; export SSH_AGENT_PID;'
       system 'echo Agent pid 7823;'
