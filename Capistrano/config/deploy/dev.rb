@@ -40,7 +40,7 @@ server '172.17.0.2', password: fetch(:password), roles: %w{app}, primary: true
 # Global options
 # --------------
   set :ssh_options, {
-    keys: %w(/home/vagrant/.ssh/id_rsa),
+    keys: %w(~/.ssh/id_rsa),
     forward_agent: true,
     user: 'root',
     password: fetch(:password),

@@ -1,7 +1,25 @@
 # Capistrano Vagrant Docker integration test
-> This repository is intended to test Capistrano integration with SAS on Docker containers running on Vagrant virtual machine (Ubuntu 12.04 precise) **
+> This repository is intended to test Capistrano integration with SAS on Docker containers running on Vagrant virtual machine (Ubuntu 12.04 precise 64 bit)
+
+## Introduction
+[Capistrano](http://capistranorb.com) is a remote server automation tool. It supports the scripting and execution of arbitrary tasks, and includes a set of sane-default deployment workflows.
+
+Capistrano can be used to:
+
+* Reliably deploy web application to any number of machines simultaneously, in sequence or as a rolling set
+* To automate audits of any number of machines (checking login logs, enumerating uptimes, and/or applying security patches)
+* To script arbitrary workflows over SSH
+* To automate common tasks in software teams.
+* To drive infrastructure provisioning tools such as chef-solo, Ansible or similar.
+
+Capistrano is also very scriptable, and can be integrated with any other Ruby software to form part of a larger tool.
 
 ## Installations
+### Installing Vagrant
+You need [Vagrant](http://www.vagrantup.com/downloads.html) with [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+### Installing Docker
+Use `docker.sh` to get the latest stable version
 
 ### Capistrano
 Use `capistrano.sh` to install latest stable rvm version on the host server. 
@@ -9,14 +27,7 @@ Use `capistrano.sh` to install latest stable rvm version on the host server.
 * Uses this Ruby version
 * Does `bundle install` to install gems `capistrano` and `capistrano-notifier` from RubyGems.org 
 
-### Installing Docker
-Use `docker.sh` to get the latest stable version
-
-### Installing Vagrant
-You need [Vagrant](http://www.vagrantup.com/downloads.html) with [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-
 ## Requirements
-
 ### SSH Agent forwarding
 SSH Agent forwarding is a technique to facilitate deployment to a remote server by allowing to use local SSH keys instead of leaving passphrase-less keys sitting on the remote servers concerned.
 Custom rake file is created `host_setup.rake` as part of the check to see if the file is setup then makes appropriate changes to allow this in currently logged in user's config level.
