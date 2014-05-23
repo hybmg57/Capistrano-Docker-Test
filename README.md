@@ -47,3 +47,19 @@ This is done prior to every deployment
 Custom rake task `remote.rake` includes checking of write permissions on the to be deployed remote server
 This is done prior to every deployment
 
+
+## Feature Comparison
+| ---------------------- | PUPPET | CAPISTRANO |
+| ---------------------- | --------------- | ---- |
+| Configuration language | "Meta" language | Ruby |
+| noop mode | yes | yes (since 2.5) |
+| Idempotence | yes | no |
+| Transactions | yes | yes |
+| Rollback | no | yes |
+| Ad-hoc server monitoring | no | yes |
+| Mode of operation | deamon pulls config | user pushes changes |
+| Dependency definition | Dependency trees with services, packages, and files | Single dependencies for dir, writability, command, gem and regex match |
+| Dependency resolution | automatically | manually |
+
+## Conclusion
+Puppet and Capistrano can play nicely together

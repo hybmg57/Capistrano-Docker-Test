@@ -23,7 +23,7 @@ set :log_level, :debug
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{SecureAccountsServices/config/app.yml}
+# set :linked_files, %w{SecureAccountsServices/config/app.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{}
@@ -45,7 +45,7 @@ namespace :deploy do
   before :deploy, 'deploy:ssh_agent'
   before :deploy, 'host_setup:setup_config'
   before :deploy, 'deploy:check_write_permissions'
-  before :deploy, 'deploy:check_revision'
+  #before :deploy, 'deploy:check_revision'
 
   desc 'Restart application'
   task :restart do
