@@ -1,4 +1,4 @@
-# Capistrano Vagrant Docker integration test
+# Capistrano Vagrant Docker integration
 > This repository is intended to test Capistrano integration with SAS on Docker containers running on Vagrant virtual machine (Ubuntu 12.04 precise 64 bit)
 
 ## Introduction
@@ -15,10 +15,10 @@ Capistrano can be used to:
 Capistrano is also very scriptable, and can be integrated with any other Ruby software to form part of a larger tool.
 
 ## Installations
-### Installing Vagrant
+### Vagrant
 You need [Vagrant](http://www.vagrantup.com/downloads.html) with [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
-### Installing Docker
+### Docker
 Use `docker.sh` to get the latest stable version
 
 ### Capistrano
