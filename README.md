@@ -49,7 +49,7 @@ This is done prior to every deployment
 
 
 ## Feature Comparison
-| ---------------------- | PUPPET | CAPISTRANO |
+| | PUPPET | CAPISTRANO |
 | ---------------------- | --------------- | ---- |
 | Configuration language | "Meta" language | Ruby |
 | noop mode | yes | yes (since 2.5) |
