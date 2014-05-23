@@ -62,4 +62,6 @@ This is done prior to every deployment
 | Dependency resolution | automatically | manually |
 
 ## Conclusion
-Puppet and Capistrano can play nicely together
+Puppet and Capistrano can play nicely together. 
+Puppet is more for environment provisioning for expressing infrastructure.
+Capistrano is more for application code management.
