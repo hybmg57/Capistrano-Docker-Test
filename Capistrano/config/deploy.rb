@@ -36,9 +36,7 @@ set :keep_releases, 5
 
 set :use_sudo, false
 
-set :config_files, %w(
-
-)
+# set :config_files, %w()
 
 namespace :deploy do
 
