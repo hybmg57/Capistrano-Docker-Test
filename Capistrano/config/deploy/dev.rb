@@ -14,14 +14,15 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{172.17.0.2 172.17.0.3 172.17.0.4 172.17.0.5}
-role :gold, %w{172.17.0.6}
+role :app, %w{root@172.17.0.2 root@172.17.0.3 root@172.17.0.4 root@172.17.0.5}
+role :gold, %w{root@172.17.0.6}
 
-set :branch, "HHVM"
+set :branch, "HHVM_Reg_Mocked"
 # set :branch, "master"
 
 set :log_level, :debug
-set :deploy_via, :copy
+set :deploy_via, :remote_cache
+# set :filter, :roles => %w{app gold}
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server definition into the
@@ -29,8 +30,9 @@ set :deploy_via, :copy
 # used to set extended properties on the server.
 
 set :password, ask('Sever password', nil, echo: false)
-server '172.17.0.2', password: fetch(:password), roles: %w{app}, primary: true
+# server '172.17.0.2', password: fetch(:password), roles: %w{app gold}, primary: true
 
+set :rsync_options, %w[--recursive --delete --delete-excluded --exclude .git* --exclude cache --exclude log]
 
 # Custom SSH Options
 # ==================

@@ -32,6 +32,12 @@ Use `capistrano.sh` to install latest stable rvm version on the host server.
 SSH Agent forwarding is a technique to facilitate deployment to a remote server by allowing to use local SSH keys instead of leaving passphrase-less keys sitting on the remote servers concerned.
 Custom rake file is created `host_setup.rake` as part of the check to see if the file is setup then makes appropriate changes to allow this in currently logged in user's config level.
 
+Start ssh-agent
+```
+eval `ssh-agent -s`
+ssh-add
+```
+
 The setup is:
 ```
 Host *

@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network :forwarded_port, guest: 8000, host: 8100
   # config.vm.network :private_network, ip: "192.168.66.66"
 
-  # config.vm.provider :virtualbox do |vb|
+  # config.vm.provider :docker do |vb|
   #   vb.name = "HHVM"
   #   vb.customize ["modifyvm", :id, "--memory", "4096"]
   #   vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]

@@ -26,7 +26,7 @@ set :log_level, :debug
 # set :linked_files, %w{SecureAccountsServices/config/app.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{}
+#set :linked_dirs, %w{SecureAccountsServices/cache}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -37,6 +37,33 @@ set :keep_releases, 5
 set :use_sudo, false
 
 # set :config_files, %w()
+
+# files which need to be symlinked to other parts of the
+# filesystem. For example nginx virtualhosts, log rotation
+# init scripts etc.
+
+=begin
+set(:symlinks, [
+    {
+        source: "nginx.conf",
+    link: "/etc/nginx/sites-enabled/#{fetch(:full_app_name)}"
+},
+    {
+        source: "unicorn_init.sh",
+    link: "/etc/init.d/unicorn_#{fetch(:full_app_name)}"
+},
+    {
+        source: "log_rotation",
+    link: "/etc/logrotate.d/#{fetch(:full_app_name)}"
+},
+    {
+        source: "monit",
+    link: "/etc/monit/conf.d/#{fetch(:full_app_name)}.conf"
+}
+])
+=end
+
+
 
 namespace :deploy do
 
@@ -68,10 +95,12 @@ namespace :deploy do
   desc 'Run ssh-agent on host machine for agent forwarding'
   task :ssh_agent do
     on roles(:all) do
-      system 'SSH_AUTH_SOCK=/tmp/ssh-mZueDP7822/agent.7822; export SSH_AUTH_SOCK;'
-      system 'SSH_AGENT_PID=7823; export SSH_AGENT_PID;'
-      system 'echo Agent pid 7823;'
+      system 'eval `ssh-agent -s`'
+      #system 'SSH_AUTH_SOCK=/tmp/ssh-mZueDP7822/agent.7822; export SSH_AUTH_SOCK;'
+      #system 'SSH_AGENT_PID=7823; export SSH_AGENT_PID;'
+      #system 'echo Agent pid 7823;'
       system 'ssh-add'
+      puts 'ssh-add'
     end
   end
 
